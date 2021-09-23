@@ -50,20 +50,20 @@ def weather(link,head):   # funzione che fa web scraping e cerca meteo nella pos
     Label_Weather = Label(root, image = weather_img,bg='#33363B')
     Label_Weather.place(x=40,y=85)    
 
-    Label_luogo = Label(Frame_bg, text=Luogo,font = ('ABeeZee',18),bg='#333B41', fg= 'white' )
-    Label_luogo.place(x=40,y=85) 
+    Label_luogo = Label(root, text=Luogo,font = ('ABeeZee',13),bg='#33363B', fg= 'white' )
+    Label_luogo.place(x=40,y=165) 
 
-    Label_wind = Label(Frame_bg,text='Wind:'+wind_speed,font = ('ABeeZee',12),bg='#333B41', fg= 'white' )
-    Label_wind.place(x=100,y=130)
+    Label_wind = Label(root,text='Wind:'+wind_speed,font = ('ABeeZee',12),bg='#333B41', fg= 'white' )
+    Label_wind.place(x=110,y=110)
     
-    Label_rainfall = Label(Frame_bg,text='Raifall:'+rainfall,font = ('ABeeZee',12),bg='#333B41', fg= 'white')
-    Label_rainfall.place(x=100,y=318)
+    Label_rainfall = Label(root,text='Raifall:'+rainfall,font = ('ABeeZee',12),bg='#333B41', fg= 'white')
+    Label_rainfall.place(x=110,y=130)
 
-    Label_temp = Label(Frame_bg,text=temp+'°C',font = ('ABeeZee',28),bg='#202329', fg= '#757778')
+    Label_temp = Label(root,text=temp+'°C',font = ('ABeeZee',28),bg='#202329', fg= '#757778')
     Label_temp.place(x=220,y=19)
 
 
-    Label_cond =Label(Frame_bg, text=condizione,font = ('ABeeZee',12),bg='#333B41', fg= '#757778' )
+    Label_cond =Label(root, text=condizione,font = ('ABeeZee',12),bg='#333B41', fg= '#757778' )
     Label_cond.place(x=220,y=322)
 
 
