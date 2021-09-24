@@ -77,10 +77,10 @@ def time_now(link,head):
     
     list_time = curr_time.split(':')
    
-    label_hour_time = Label(root, text=list_time[0],font = ('Bungee',42,'bold'),bg='#33363B', fg= '#656565')
-    label_hour_time.place(x=295,y=82)
+    label_hour_time = Label(root, text=list_time[0],font = ('Bungee',40,'bold'),bg='#33363B', fg= '#656565')
+    label_hour_time.place(x=295,y=78)
 
-    label_min_time = Label(root, text=list_time[1],font = ('Bungee',42,'bold'),bg='#33363B', fg= '#656565')
+    label_min_time = Label(root, text=list_time[1],font = ('Bungee',40,'bold'),bg='#33363B', fg= '#656565')
     label_min_time.place(x=295,y=140)
 
     label_date = Label(root, text = curr_date,font = ('Bungee',13),bg='#33363B', fg= '#878585' )
@@ -90,16 +90,15 @@ def time_now(link,head):
 root = Tk()
 root.title('Essential Widget')
 root.geometry('400x300+50+50')
-root.overrideredirect(True)
-
+root.overrideredirect(False)
+root.wm_attributes('-alpha',0.3)
 
 
 if os.name == "posix":
-    fonts = ("Courier", 16)
-    border='white'    
+    root.overrideredirect(False)
+  
 else:
-    fonts = ("Courier", 12)
-    border='black'
+    root.overrideredirect(True)
     root.wm_attributes('-transparentcolor','red')
     root.config(bg='red')
 
