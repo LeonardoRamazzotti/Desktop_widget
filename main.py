@@ -90,8 +90,9 @@ def time_now(link,head):
 root = Tk()
 root.title('Essential Widget')
 root.geometry('400x300+50+50')
-root.overrideredirect(False)
-root.wm_attributes('-alpha',0.3)
+root.overrideredirect(False)\
+root.wait_visibility(root)
+root.wm_attributes('-alpha',0.8)
 
 
 if os.name == "posix":
@@ -114,7 +115,6 @@ weather_par_cloudy = PhotoImage(file='par_cloudy.png')
 b_google = PhotoImage(file='google.png')
 
 Label_bg = Label(root, image = image_bg,bg='red')
-
 Label_bg.pack()
 
 Frame_bg = Frame(root,bg='white')
