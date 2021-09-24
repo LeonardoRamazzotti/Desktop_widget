@@ -128,7 +128,7 @@ Label_bg.pack()
 Frame_bg = Frame(root,bg='white')
 Frame_bg.pack()
 
-entry_google = Entry(root,width=20,font = ('ABeeZee',13),highlightthickness = 0,borderwidth=0,selectbackground='white')
+entry_google = Entry(root,width=20,bg='#656565',fg='#1F2226',font = ('ABeeZee',13),highlightthickness = 0,borderwidth=0,selectbackground='white')
 entry_google.place(x=38,y=246)
 
 Button_search = Button(root,image = b_google,bg='#33363B',command = Searchbar,highlightthickness = 0,borderwidth=0,activebackground='#33363B')
@@ -152,8 +152,8 @@ time_now(URL_time,headers)
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#root.bind('f1', lambda event: root.destroy())
-
+root.bind('<F1>', lambda event: root.destroy())
+root.bind('<Enter>',Searchbar)
 
 
 root.mainloop()
