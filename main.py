@@ -50,21 +50,21 @@ def weather(link,head):   # funzione che fa web scraping e cerca meteo nella pos
     Label_Weather = Label(root, image = weather_img,bg='#33363B')
     Label_Weather.place(x=40,y=95)    
 
-    Label_luogo = Label(root, text=Luogo,font = ('ABeeZee',13),bg='#33363B', fg= 'white' )
-    Label_luogo.place(x=40,y=185) 
+    Label_luogo = Label(root, text=Luogo,font = ('ABeeZee',13),bg='#33363B', fg= '#878585' )
+    Label_luogo.place(x=50,y=185) 
 
-    Label_wind = Label(root,text='Wind:'+wind_speed,font = ('ABeeZee',12),bg='#33363B', fg= 'white' )
-    Label_wind.place(x=115,y=140)
+    Label_wind = Label(root,text='Wind:'+wind_speed,font = ('ABeeZee',12),bg='#33363B', fg= '#878585' )
+    Label_wind.place(x=130,y=140)
     
-    Label_rainfall = Label(root,text='Raifall:'+rainfall,font = ('ABeeZee',12),bg='#33363B', fg= 'white')
-    Label_rainfall.place(x=115,y=160)
+    Label_rainfall = Label(root,text='Raifall:'+rainfall,font = ('ABeeZee',12),bg='#33363B', fg= '#878585')
+    Label_rainfall.place(x=130,y=160)
 
-    Label_temp = Label(root,text=temp+'°C',font = ('ABeeZee',20),bg='#33363B', fg= 'white')
-    Label_temp.place(x=115,y=90)
+    Label_temp = Label(root,text=temp+'°C',font = ('ABeeZee',20),bg='#33363B', fg= '#878585')
+    Label_temp.place(x=130,y=90)
 
 
-    Label_cond =Label(root, text=condizione,font = ('ABeeZee',12),bg='#33363B', fg= 'white' )
-    Label_cond.place(x=110,y=120)
+    Label_cond =Label(root, text=condizione,font = ('ABeeZee',12),bg='#33363B', fg= '#878585' )
+    Label_cond.place(x=130,y=120)
 
 
 def time_now(link,head):
@@ -72,18 +72,26 @@ def time_now(link,head):
     page = requests.get(link, headers=head)
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    curr_time = soup.find_all("div", {"class": "gsrt vk_bk FzvWSb XcVN5d YwPhnf"})
+    curr_time = str(soup.find("div", {"class": "gsrt vk_bk FzvWSb XcVN5d YwPhnf"}).get_text())
+    curr_date =str(soup.find('div',{'class':'vk_gy vk_sh'}).get_text())
+    
+    list_time = curr_time.split(':')
    
-    label_curr_time = Label(root, text=curr_time,font = ('ABeeZee',12),bg='#33363B', fg= 'white')
-    label_curr_time.place(x=160,y=90)
+    label_hour_time = Label(root, text=list_time[0],font = ('Bungee',42,'bold'),bg='#33363B', fg= '#656565')
+    label_hour_time.place(x=295,y=82)
+
+    label_min_time = Label(root, text=list_time[1],font = ('Bungee',42,'bold'),bg='#33363B', fg= '#656565')
+    label_min_time.place(x=295,y=140)
+
+    label_date = Label(root, text = curr_date,font = ('Bungee',13),bg='#33363B', fg= '#878585' )
+    label_date.place(x=28,y=28)
 
 
 root = Tk()
 root.title('Essential Widget')
 root.geometry('400x300+50+50')
 root.overrideredirect(True)
-root.wm_attributes('-transparentcolor','red')
-root.config(bg='red')
+
 
 
 if os.name == "posix":
@@ -92,6 +100,9 @@ if os.name == "posix":
 else:
     fonts = ("Courier", 12)
     border='black'
+    root.wm_attributes('-transparentcolor','red')
+    root.config(bg='red')
+
 
 image_bg= PhotoImage(file='Web 1280 – 1.png')
 weather_sunny = PhotoImage(file='sunny.png')
