@@ -2,6 +2,7 @@ from tkinter import *
 import os
 import requests
 from bs4 import BeautifulSoup 
+import webbrowser
 
 def weather(link,head):   # funzione che fa web scraping e cerca meteo nella posizione corrente
 
@@ -56,11 +57,11 @@ def weather(link,head):   # funzione che fa web scraping e cerca meteo nella pos
     Label_wind = Label(root,text='Wind:'+wind_speed,font = ('ABeeZee',12),bg='#33363B', fg= '#878585' )
     Label_wind.place(x=130,y=140)
     
-    Label_rainfall = Label(root,text='Raifall:'+rainfall,font = ('ABeeZee',12),bg='#33363B', fg= '#878585')
-    Label_rainfall.place(x=130,y=160)
+    Label_rainfall = Label(root,text='Rainfall:'+rainfall,font = ('ABeeZee',12),bg='#33363B', fg= '#878585')
+    Label_rainfall.place(x=129,y=160)
 
     Label_temp = Label(root,text=temp+'°C',font = ('ABeeZee',20),bg='#33363B', fg= '#878585')
-    Label_temp.place(x=130,y=90)
+    Label_temp.place(x=130,y=88)
 
 
     Label_cond =Label(root, text=condizione,font = ('ABeeZee',12),bg='#33363B', fg= '#878585' )
@@ -78,14 +79,21 @@ def time_now(link,head):
     list_time = curr_time.split(':')
    
     label_hour_time = Label(root, text=list_time[0],font = ('Bungee',40,'bold'),bg='#33363B', fg= '#656565')
-    label_hour_time.place(x=295,y=78)
+    label_hour_time.place(x=292,y=78)
 
     label_min_time = Label(root, text=list_time[1],font = ('Bungee',40,'bold'),bg='#33363B', fg= '#656565')
-    label_min_time.place(x=295,y=140)
+    label_min_time.place(x=292,y=140)
 
     label_date = Label(root, text = curr_date,font = ('Bungee',13),bg='#33363B', fg= '#878585' )
     label_date.place(x=28,y=28)
 
+def Searchbar():
+    
+    search_word =str(entry_google.get())
+    
+    webbrowser.open('https://www.google.com/search?q='+ search_word)
+    
+    entry_google.delete(0,'end')
 
 root = Tk()
 root.title('Essential Widget')
@@ -120,6 +128,11 @@ Label_bg.pack()
 Frame_bg = Frame(root,bg='white')
 Frame_bg.pack()
 
+entry_google = Entry(root,width=20,font = ('ABeeZee',13),highlightthickness = 0,borderwidth=0,selectbackground='white')
+entry_google.place(x=38,y=246)
+
+Button_search = Button(root,image = b_google,bg='#33363B',command = Searchbar,highlightthickness = 0,borderwidth=0,activebackground='#33363B')
+Button_search.place(x=315,y=241)
 
 
 
@@ -139,8 +152,8 @@ time_now(URL_time,headers)
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-root.bind('a', lambda event: root.destroy())
-root.bind('Ctrl+Shift+q', lambda event: root.destroy())
+#root.bind('f1', lambda event: root.destroy())
+
 
 
 root.mainloop()
