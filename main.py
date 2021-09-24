@@ -90,9 +90,9 @@ def time_now(link,head):
 root = Tk()
 root.title('Essential Widget')
 root.geometry('400x300+50+50')
-root.overrideredirect(False)\
-root.wait_visibility(root)
+root.overrideredirect(False)
 root.wm_attributes('-alpha',0.8)
+root.wait_visibility(root)
 
 
 if os.name == "posix":
