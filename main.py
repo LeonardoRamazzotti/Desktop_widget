@@ -132,7 +132,7 @@ entry_google = Entry(root,width=20,bg='#656565',fg='#1F2226',font = ('ABeeZee',1
 entry_google.place(x=38,y=246)
 
 Button_search = Button(root,image = b_google,bg='#33363B',command = Searchbar,highlightthickness = 0,borderwidth=0,activebackground='#33363B')
-Button_search.place(x=315,y=241)
+Button_search.place(x=315,y=243)
 
 
 
