@@ -98,16 +98,19 @@ def Searchbar():
 root = Tk()
 root.title('Essential Widget')
 root.geometry('400x300+50+50')
-root.overrideredirect(False)
 root.wm_attributes('-alpha',0.8)
-root.wait_visibility(root)
+
 
 
 if os.name == "posix":
-    root.overrideredirect(False)
-  
+    root.overrideredirect(True)
+    root.config(bg='#1F2226')
+    
+
 else:
     root.overrideredirect(True)
+    root.wm_attributes('-alpha',0.8)
+    root.wait_visibility(root)
     root.wm_attributes('-transparentcolor','red')
     root.config(bg='red')
 
@@ -122,7 +125,9 @@ weather_snowing = PhotoImage(file='snow.png')
 weather_par_cloudy = PhotoImage(file='par_cloudy.png')
 b_google = PhotoImage(file='google.png')
 
-Label_bg = Label(root, image = image_bg,bg='red')
+
+
+Label_bg = Label(root, image = image_bg,bg='#1F2226')
 Label_bg.pack()
 
 Frame_bg = Frame(root,bg='white')
