@@ -103,7 +103,7 @@ root.wm_attributes('-alpha',0.8)
 
 
 if os.name == "posix":
-    root.overrideredirect(True)
+    root.overrideredirect(False)
     root.config(bg='#1F2226')
     
 
@@ -124,6 +124,7 @@ weather_hailstorm = PhotoImage(file='hailstorm.png')
 weather_snowing = PhotoImage(file='snow.png')
 weather_par_cloudy = PhotoImage(file='par_cloudy.png')
 b_google = PhotoImage(file='google.png')
+close_icon = PhotoImage(file='close.png')
 
 
 
@@ -138,7 +139,6 @@ entry_google.place(x=38,y=246)
 
 Button_search = Button(root,image = b_google,bg='#33363B',command = Searchbar,highlightthickness = 0,borderwidth=0,activebackground='#33363B')
 Button_search.place(x=315,y=243)
-
 
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
