@@ -6,6 +6,7 @@ import webbrowser
 
 def weather(link,head):   # funzione che fa web scraping e cerca meteo nella posizione corrente
 
+    
     page = requests.get(link, headers=head)
     soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -18,7 +19,10 @@ def weather(link,head):   # funzione che fa web scraping e cerca meteo nella pos
     temp = str(soup.find(id='wob_tm').get_text())
 
     
-    
+    if len(condizione) <=15 :
+        cond_size = 12
+    else:
+        cond_size =10
     
     if condizione == 'Soleggiato' or condizione == 'Sereno':
         weather_img =weather_sunny
@@ -64,7 +68,7 @@ def weather(link,head):   # funzione che fa web scraping e cerca meteo nella pos
     Label_temp.place(x=130,y=88)
 
 
-    Label_cond =Label(root, text=condizione,font = ('ABeeZee',12),bg='#33363B', fg= '#878585' )
+    Label_cond =Label(root, text=condizione,font = ('ABeeZee',cond_size),bg='#33363B', fg= '#878585' )
     Label_cond.place(x=130,y=120)
 
 
@@ -80,6 +84,7 @@ def time_now(link,head):
    
     label_hour_time = Label(root, text=list_time[0],font = ('Bungee',40,'bold'),bg='#33363B', fg= '#656565')
     label_hour_time.place(x=292,y=78)
+    
 
     label_min_time = Label(root, text=list_time[1],font = ('Bungee',40,'bold'),bg='#33363B', fg= '#656565')
     label_min_time.place(x=292,y=140)
@@ -158,7 +163,7 @@ time_now(URL_time,headers)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 root.bind('<F1>', lambda event: root.destroy())
-root.bind('<Enter>',Searchbar)
+
 
 
 root.mainloop()
